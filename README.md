@@ -1,7 +1,7 @@
 ![Build Workflow](https://github.com/dbretty/PROFiLiX.Client/actions/workflows/build.yaml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# EUC Profile Buddy
+# PROFiLiX
 
 Windows application to automate the maintenance of your End User Computing (EUC) user profiles directly from the system tray. Includes user and admin options to effectively manage profile size.
 
