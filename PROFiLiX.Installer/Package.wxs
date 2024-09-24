@@ -1,0 +1,68 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui" >
+
+	<?define InfoURL="https://bretty.me.uk/" ?>
+	
+		<Package Name="PROFiLiX Client" Manufacturer="bretty.me.uk" Version="2.0.0.0" UpgradeCode="2179123b-81ac-4f90-91e7-05da31013b14">
+
+
+			<Icon Id="icon.ico" SourceFile="..\PROFiLiX.Installer\Icon\profilix.ico"/>
+			<Property Id="ARPPRODUCTICON" Value="icon.ico" />
+			<Property Id="ARPHELPLINK" Value="$(var.InfoURL)" />
+			<Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
+	  
+			<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" AllowSameVersionUpgrades="no" />
+	  
+			<MediaTemplate EmbedCab="yes" />
+
+			<WixVariable Id="WixUILicenseRtf" Value="eucpbs.rtf" />
+			<WixVariable Id="WixUIBannerBmp" Value="Images\Banner.bmp" />
+			<WixVariable Id="WixUIDialogBmp" Value="Images\Background.bmp" />
+			
+			<ui:WixUI
+				Id="WixUI_InstallDir"
+				InstallDirectory="INSTALLFOLDER"
+			/>
+
+			<Feature Id="Main">
+				<Files Include="..\PROFiLiX.GUI\bin\publish\**">
+				</Files>
+				<ComponentRef Id="PROFiLiXDesktop" />
+				<ComponentRef Id="PROFiLiXStart" />
+				<ComponentRef Id="PROFiLiXAutoStart" />
+			</Feature>
+
+			<Component Id="PROFiLiXDesktop" Guid="bf555de8-9e28-4ee6-ba49-6b196918853e" Directory="DesktopFolder" >
+				<Shortcut Id="PROFiLiXDesktopShortcut"
+						  Name="PROFiLiX"
+						  Description="PROFiLiX."
+						  Directory="DesktopFolder"
+						  Target="[INSTALLFOLDER]PROFiLiX.GUI.exe"
+						  WorkingDirectory="INSTALLFOLDER"
+						  Icon="icon.ico" />
+				<RegistryValue Root="HKCU" Key="Software\PROFiLiX.Client\GUI" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+
+			<Component Id="PROFiLiXStart" Guid="b8fa5ffa-b207-4cc3-a5e7-d187161d626a" Directory="ProgramMenuFolder" >
+				<Shortcut Id="PROFiLiXStartShortcut"
+						  Name="PROFiLiX"
+						  Description="PROFiLiX."
+						  Directory="ProgramMenuFolder"
+						  Target="[INSTALLFOLDER]PROFiLiX.GUI.exe"
+						  WorkingDirectory="INSTALLFOLDER"
+						  Icon="icon.ico" />
+				<RegistryValue Root="HKCU" Key="Software\PROFiLiX.Client\GUI" Name="installedStart" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+
+			<Component Id="PROFiLiXAutoStart" Guid="1fc1d9c7-459d-4630-af2a-6394c0681251">
+				<RegistryValue Id="ProfilixAs.rst" Root="HKCU" Action="write"
+							   Key="Software\Microsoft\Windows\CurrentVersion\Run"
+							   Name="PROFiLiX"
+							   Value="[INSTALLFOLDER]PROFiLiX.GUI.exe"
+							   Type="string" />
+			</Component>
+
+			
+			
+  </Package>
+	
+</Wix>

@@ -1,0 +1,41 @@
+name: "Build Process"
+
+on:
+  push:
+    branches:
+    paths:
+      - 'PROFiLiX.Common/**' 
+      - 'PROFiLiX.Common.Test/**' 
+  pull_request:
+    branches: ["main"]
+    paths:
+      - 'PROFiLiX.Common/**'
+      - 'PROFiLiX.Common.Test/**' 
+
+jobs:
+  build:
+    name: "Build & Test"
+
+    permissions: write-all
+
+    runs-on: windows-latest
+
+    steps:
+      - name: Check Out Code Base
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.x
+      - name : Coverlet Testing
+        uses: b3b00/coverlet-action@1.2.5
+        with:
+          testProject: 'PROFiLiX.Common.Test/PROFiLiX.Common.Tests.csproj'
+          output: 'lcov.info'
+          outputFormat: 'lcov'
+          excludes: '[program]*,[test]test.*'
+      - name: Coveralls Reporting
+        uses: coverallsapp/github-action@v2
