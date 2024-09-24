@@ -43,7 +43,7 @@ namespace PROFiLiX.Common.Tests.AppConfig
             };
 
             // Assert
-            Assert.That(ac.AppRegistryKey, Is.EqualTo("Software\\EUCProfileBuddy"));
+            Assert.That(ac.AppRegistryKey, Is.EqualTo("Software\\PROFiLiX"));
             Assert.That(ac.LogLevel, Is.EqualTo("Info"));
             Assert.That(ac.LoggingServerUri, Is.EqualTo("localhost"));
             Assert.That(ac.LoggingServerPort, Is.EqualTo("5120"));
