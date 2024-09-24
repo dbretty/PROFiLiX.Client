@@ -1,41 +1,28 @@
-name: "Build Process"
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build Process
 
 on:
   push:
-    branches:
-    paths:
-      - 'PROFiLiX.Common/**' 
-      - 'PROFiLiX.Common.Test/**' 
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
-    paths:
-      - 'PROFiLiX.Common/**'
-      - 'PROFiLiX.Common.Test/**' 
+    branches: [ "main" ]
 
 jobs:
   build:
-    name: "Build & Test"
-
-    permissions: write-all
 
     runs-on: windows-latest
 
     steps:
-      - name: Check Out Code Base
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0        
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: |
-            8.x
-      - name : Coverlet Testing
-        uses: b3b00/coverlet-action@1.2.5
-        with:
-          testProject: 'PROFiLiX.Common.Test/PROFiLiX.Common.Tests.csproj'
-          output: 'lcov.info'
-          outputFormat: 'lcov'
-          excludes: '[program]*,[test]test.*'
-      - name: Coveralls Reporting
-        uses: coverallsapp/github-action@v2
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
