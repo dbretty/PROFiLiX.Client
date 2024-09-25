@@ -20,8 +20,10 @@
 
 namespace PROFiLiX.Common.ApiClient
 {
+
 	using System = global::System;
 
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
 	public partial class Client
 	{
@@ -409,6 +411,7 @@ namespace PROFiLiX.Common.ApiClient
 		}
 	}
 
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
 	public partial class ProfilixTaskClient
 	{
@@ -1137,6 +1140,7 @@ namespace PROFiLiX.Common.ApiClient
 		}
 	}
 
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
 	public partial class UserProfileClient
 	{
@@ -1882,6 +1886,7 @@ namespace PROFiLiX.Common.ApiClient
 	/// <summary>
 	/// Class for the EUC Profile Buddy Task model.
 	/// </summary>
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
 	public partial class ProfilixTask
 	{
@@ -1944,6 +1949,7 @@ namespace PROFiLiX.Common.ApiClient
 	/// Class for the user profile model.
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	public partial class UserProfile
 	{
 		/// <summary>
@@ -2074,6 +2080,7 @@ namespace PROFiLiX.Common.ApiClient
 
 
 	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	public partial class ApiException : System.Exception
 	{
 		public int StatusCode { get; private set; }
@@ -2097,6 +2104,7 @@ namespace PROFiLiX.Common.ApiClient
 	}
 
 	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 	public partial class ApiException<TResult> : ApiException
 	{
 		public TResult Result { get; private set; }

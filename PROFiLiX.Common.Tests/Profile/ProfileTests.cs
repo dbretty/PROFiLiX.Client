@@ -60,6 +60,62 @@ namespace PROFiLiX.Common.Tests.Profile
         }
 
         /// <summary>
+        /// Test method to ensure ExecuteAction with valid data succeeds.
+        /// </summary>
+        [Test]
+        public void ExecuteAction_WithResetChrome_ShouldSucceed()
+        {
+            // Arrange
+            var mockLogger = new Mock<ILogger>();
+            var mockFilesAndFolders = new Mock<IFilesAndFolders>();
+            var mockUserProfile = new UserProfile(mockLogger.Object, mockFilesAndFolders.Object);
+
+            Assert.DoesNotThrow(() => mockUserProfile.ExecuteAction(ProfileActionDefinition.ResetChrome, "test", mockUserProfile));
+        }
+
+        /// <summary>
+        /// Test method to ensure ExecuteAction with valid data succeeds.
+        /// </summary>
+        [Test]
+        public void ExecuteAction_WithResetMozilla_ShouldSucceed()
+        {
+            // Arrange
+            var mockLogger = new Mock<ILogger>();
+            var mockFilesAndFolders = new Mock<IFilesAndFolders>();
+            var mockUserProfile = new UserProfile(mockLogger.Object, mockFilesAndFolders.Object);
+
+            Assert.DoesNotThrow(() => mockUserProfile.ExecuteAction(ProfileActionDefinition.ResetFirefox, "test", mockUserProfile));
+        }
+
+        /// <summary>
+        /// Test method to ensure ExecuteAction with valid data succeeds.
+        /// </summary>
+        [Test]
+        public void ExecuteAction_WithResetTeamsClassic_ShouldSucceed()
+        {
+            // Arrange
+            var mockLogger = new Mock<ILogger>();
+            var mockFilesAndFolders = new Mock<IFilesAndFolders>();
+            var mockUserProfile = new UserProfile(mockLogger.Object, mockFilesAndFolders.Object);
+
+            Assert.DoesNotThrow(() => mockUserProfile.ExecuteAction(ProfileActionDefinition.ResetTeamsv1, "test", mockUserProfile));
+        }
+
+        /// <summary>
+        /// Test method to ensure ExecuteAction with valid data succeeds.
+        /// </summary>
+        [Test]
+        public void ExecuteAction_WithResetTeams_ShouldSucceed()
+        {
+            // Arrange
+            var mockLogger = new Mock<ILogger>();
+            var mockFilesAndFolders = new Mock<IFilesAndFolders>();
+            var mockUserProfile = new UserProfile(mockLogger.Object, mockFilesAndFolders.Object);
+
+            Assert.DoesNotThrow(() => mockUserProfile.ExecuteAction(ProfileActionDefinition.ResetTeamsv2, "test", mockUserProfile));
+        }
+
+        /// <summary>
         /// Checks that ProfileAction returns string value.
         /// </summary>
         [Test]
