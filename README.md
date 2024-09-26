@@ -1,5 +1,6 @@
 ![Build Workflow](https://github.com/dbretty/PROFiLiX.Client/actions/workflows/build.yaml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Coverage Status](https://coveralls.io/repos/github/dbretty/PROFiLiX.Client/badge.svg?branch=main)](https://coveralls.io/github/dbretty/PROFiLiX.Client?branch=main)
 
 # PROFiLiX
 
