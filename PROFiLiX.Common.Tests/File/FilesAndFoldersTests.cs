@@ -81,6 +81,27 @@ namespace PROFiLiX.Common.Tests.File
         }
 
         /// <summary>
+        /// Checks that DeleteFileAsync with with Valid data succeeds.
+        /// </summary>
+        [Test]
+        public void DirectorySizeAsync_WithValidData_ShouldSucceed()
+        {
+            // Arrange
+            var mockILogger = new Mock<ILogger>();
+            var mockFilesAndFolders = new FilesAndFolders(mockILogger.Object);
+            string folderName = "C:\\windows\\temp";
+            Directory.CreateDirectory(folderName);
+            Thread.Sleep(2000);
+            DirectoryInfo di = new DirectoryInfo(folderName);
+
+            // Act
+            var response = mockFilesAndFolders.DirectorySizeAsync(di).Result;
+
+            // Assert
+            Assert.That(response, Is.GreaterThan(0));
+        }
+
+        /// <summary>
         /// Checks that FormatFileSize Valid data succeeds.
         /// </summary>
         [Test]
@@ -299,6 +320,24 @@ namespace PROFiLiX.Common.Tests.File
 
             // Act + Assert
             Assert.Throws<ArgumentNullException>(() => mockFilesAndFolders.CreateDirectory(rootFolder));
+        }
+
+        /// <summary>
+        /// Checks that CheckDirectory with invalid data errors.
+        /// </summary>
+        [Test]
+        public void DirectorySizeAsync_WithInvalidFolderName_ShouldThrowArgumentNullException()
+        {
+            // Arrange
+            var mockILogger = new Mock<ILogger>();
+            var mockFilesAndFolders = new FilesAndFolders(mockILogger.Object);
+            DirectoryInfo? directoryInfo = null;
+
+            // Act + Assert
+            Assert.Throws<AggregateException>(() =>
+            {
+                long result = mockFilesAndFolders.DirectorySizeAsync(directoryInfo).Result;
+            });
         }
 
         /// <summary>

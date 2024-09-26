@@ -12,6 +12,7 @@ namespace PROFiLiX.Common.Tests.Registry
     using PROFiLiX.Common.Registry;
     using PROFiLiX.Common.Registry.Exceptions;
     using PROFiLiX.Common.Registry.Model;
+    using System.IO;
 
     /// <summary>
     /// Class to do Registry unit tests.
@@ -652,6 +653,18 @@ namespace PROFiLiX.Common.Tests.Registry
                 Assert.That(ex.Message, Is.EqualTo("test message"));
                 Assert.That(ex.InnerException.Message, Is.EqualTo("inner"));
             }
+        }
+
+        /// <summary>
+        /// Test method to ensure InvalidValueException with message throws correctly.
+        /// </summary>
+        [Test]
+        public void InvalidValueException_WithDefault_ShouldThrowException()
+        {
+            var result = new InvalidValueException();
+            var message = result.Message;
+
+            StringAssert.Contains("InvalidValueException", message);
         }
 
         /// <summary>
