@@ -21,6 +21,7 @@ namespace PROFiLiX.Common.Services
         /// </summary>
         /// <param name="appConfig">The app config to pass in.</param>
         /// <param name="hubConnection">The hub connection to pass in.</param>
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
         public ProfilixHubServices(IAppConfig appConfig, HubConnection hubConnection)
         {
             this.appConfig = appConfig;
@@ -28,6 +29,7 @@ namespace PROFiLiX.Common.Services
         }
 
         /// <inheritdoc/>
+        [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
         public async void ProcessHubAction(string clientAction, string adminUserName, string connectionId, int taskId)
         {
             if (clientAction == "ClearTempFiles")
