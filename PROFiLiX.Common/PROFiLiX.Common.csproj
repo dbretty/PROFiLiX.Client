@@ -16,6 +16,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="System.Management.Automation" Version="7.4.5" />
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
 

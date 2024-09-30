@@ -20,2101 +20,2875 @@
 
 namespace PROFiLiX.Common.ApiClient
 {
+    using System = global::System;
 
-	using System = global::System;
-
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	public partial class Client
-	{
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class Client
+    {
 #pragma warning disable 8618
-		private string _baseUrl;
+        private string _baseUrl;
 #pragma warning restore 8618
 
-		private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
-		private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
+        private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
+        private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		public Client()
+        public Client()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		{
-			BaseUrl = "http://localhost:5120";
-			Initialize();
-		}
+        {
+            BaseUrl = "http://localhost:5120";
+            Initialize();
+        }
 
-		private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
-		{
-			var settings = new Newtonsoft.Json.JsonSerializerSettings();
-			UpdateJsonSerializerSettings(settings);
-			return settings;
-		}
+        private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        {
+            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
 
-		public string BaseUrl
-		{
-			get { return _baseUrl; }
-			set
-			{
-				_baseUrl = value;
-				if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-					_baseUrl += '/';
-			}
-		}
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
 
-		protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
 
-		static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
 
-		partial void Initialize();
+        partial void Initialize();
 
-		partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
-		partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
-		partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task PostAccountPerformExternalLoginAsync(string provider, string returnUrl)
-		{
-			return PostAccountPerformExternalLoginAsync(provider, returnUrl, System.Threading.CancellationToken.None);
-		}
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task PostAccountPerformExternalLoginAsync(string provider, string returnUrl)
+        {
+            return PostAccountPerformExternalLoginAsync(provider, returnUrl, System.Threading.CancellationToken.None);
+        }
 
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task PostAccountPerformExternalLoginAsync(string provider, string returnUrl, System.Threading.CancellationToken cancellationToken)
-		{
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-					request_.Method = new System.Net.Http.HttpMethod("POST");
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task PostAccountPerformExternalLoginAsync(string provider, string returnUrl, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
 
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "Account/PerformExternalLogin"
-					urlBuilder_.Append("Account/PerformExternalLogin");
-					urlBuilder_.Append('?');
-					if (provider != null)
-					{
-						urlBuilder_.Append(System.Uri.EscapeDataString("provider")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
-					}
-					if (returnUrl != null)
-					{
-						urlBuilder_.Append(System.Uri.EscapeDataString("returnUrl")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(returnUrl, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
-					}
-					urlBuilder_.Length--;
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "Account/PerformExternalLogin"
+                    urlBuilder_.Append("Account/PerformExternalLogin");
+                    urlBuilder_.Append('?');
+                    if (provider != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("provider")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(provider, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    if (returnUrl != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("returnUrl")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(returnUrl, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
 
-					PrepareRequest(client_, request_, urlBuilder_);
+                    PrepareRequest(client_, request_, urlBuilder_);
 
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
 
-					PrepareRequest(client_, request_, url_);
+                    PrepareRequest(client_, request_, url_);
 
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
 
-						ProcessResponse(client_, response_);
+                        ProcessResponse(client_, response_);
 
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							return;
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
 
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task PostAccountLogoutAsync(string returnUrl)
-		{
-			return PostAccountLogoutAsync(returnUrl, System.Threading.CancellationToken.None);
-		}
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task PostAccountLogoutAsync(string returnUrl)
+        {
+            return PostAccountLogoutAsync(returnUrl, System.Threading.CancellationToken.None);
+        }
 
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task PostAccountLogoutAsync(string returnUrl, System.Threading.CancellationToken cancellationToken)
-		{
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-					request_.Method = new System.Net.Http.HttpMethod("POST");
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task PostAccountLogoutAsync(string returnUrl, System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
 
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "Account/Logout"
-					urlBuilder_.Append("Account/Logout");
-					urlBuilder_.Append('?');
-					if (returnUrl != null)
-					{
-						urlBuilder_.Append(System.Uri.EscapeDataString("returnUrl")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(returnUrl, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
-					}
-					urlBuilder_.Length--;
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "Account/Logout"
+                    urlBuilder_.Append("Account/Logout");
+                    urlBuilder_.Append('?');
+                    if (returnUrl != null)
+                    {
+                        urlBuilder_.Append(System.Uri.EscapeDataString("returnUrl")).Append('=').Append(System.Uri.EscapeDataString(ConvertToString(returnUrl, System.Globalization.CultureInfo.InvariantCulture))).Append('&');
+                    }
+                    urlBuilder_.Length--;
 
-					PrepareRequest(client_, request_, urlBuilder_);
+                    PrepareRequest(client_, request_, urlBuilder_);
 
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
 
-					PrepareRequest(client_, request_, url_);
+                    PrepareRequest(client_, request_, url_);
 
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
 
-						ProcessResponse(client_, response_);
+                        ProcessResponse(client_, response_);
 
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							return;
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
 
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task PostAccountManageDownloadPersonalDataAsync()
-		{
-			return PostAccountManageDownloadPersonalDataAsync(System.Threading.CancellationToken.None);
-		}
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task PostAccountManageDownloadPersonalDataAsync()
+        {
+            return PostAccountManageDownloadPersonalDataAsync(System.Threading.CancellationToken.None);
+        }
 
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task PostAccountManageDownloadPersonalDataAsync(System.Threading.CancellationToken cancellationToken)
-		{
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-					request_.Method = new System.Net.Http.HttpMethod("POST");
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task PostAccountManageDownloadPersonalDataAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
 
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "Account/Manage/DownloadPersonalData"
-					urlBuilder_.Append("Account/Manage/DownloadPersonalData");
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "Account/Manage/DownloadPersonalData"
+                    urlBuilder_.Append("Account/Manage/DownloadPersonalData");
 
-					PrepareRequest(client_, request_, urlBuilder_);
+                    PrepareRequest(client_, request_, urlBuilder_);
 
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
 
-					PrepareRequest(client_, request_, url_);
+                    PrepareRequest(client_, request_, url_);
 
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
 
-						ProcessResponse(client_, response_);
+                        ProcessResponse(client_, response_);
 
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							return;
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
 
-		protected struct ObjectResponseResult<T>
-		{
-			public ObjectResponseResult(T responseObject, string responseText)
-			{
-				this.Object = responseObject;
-				this.Text = responseText;
-			}
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
 
-			public T Object { get; }
+            public T Object { get; }
 
-			public string Text { get; }
-		}
+            public string Text { get; }
+        }
 
-		public bool ReadResponseAsString { get; set; }
+        public bool ReadResponseAsString { get; set; }
 
-		protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
-		{
-			if (response == null || response.Content == null)
-			{
-				return new ObjectResponseResult<T>(default(T), string.Empty);
-			}
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T), string.Empty);
+            }
 
-			if (ReadResponseAsString)
-			{
-				var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				try
-				{
-					var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
-					return new ObjectResponseResult<T>(typedBody, responseText);
-				}
-				catch (Newtonsoft.Json.JsonException exception)
-				{
-					var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-					throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
-				}
-			}
-			else
-			{
-				try
-				{
-					using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-					using (var streamReader = new System.IO.StreamReader(responseStream))
-					using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
-					{
-						var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
-						var typedBody = serializer.Deserialize<T>(jsonTextReader);
-						return new ObjectResponseResult<T>(typedBody, string.Empty);
-					}
-				}
-				catch (Newtonsoft.Json.JsonException exception)
-				{
-					var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-					throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
-				}
-			}
-		}
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody, responseText);
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    using (var streamReader = new System.IO.StreamReader(responseStream))
+                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
+                    {
+                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
+                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
+                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
 
-		private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
-		{
-			if (value == null)
-			{
-				return "";
-			}
+        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
 
-			if (value is System.Enum)
-			{
-				var name = System.Enum.GetName(value.GetType(), value);
-				if (name != null)
-				{
-					var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
-					if (field != null)
-					{
-						var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
-							as System.Runtime.Serialization.EnumMemberAttribute;
-						if (attribute != null)
-						{
-							return attribute.Value != null ? attribute.Value : name;
-						}
-					}
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
 
-					var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
-					return converted == null ? string.Empty : converted;
-				}
-			}
-			else if (value is bool)
-			{
-				return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
-			}
-			else if (value is byte[])
-			{
-				return System.Convert.ToBase64String((byte[])value);
-			}
-			else if (value is string[])
-			{
-				return string.Join(",", (string[])value);
-			}
-			else if (value.GetType().IsArray)
-			{
-				var valueArray = (System.Array)value;
-				var valueTextArray = new string[valueArray.Length];
-				for (var i = 0; i < valueArray.Length; i++)
-				{
-					valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
-				}
-				return string.Join(",", valueTextArray);
-			}
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool)
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[])value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
 
-			var result = System.Convert.ToString(value, cultureInfo);
-			return result == null ? "" : result;
-		}
-	}
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
 
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	public partial class ProfilixTaskClient
-	{
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProfilixCustomActionClient
+    {
 #pragma warning disable 8618
-		private string _baseUrl;
+        private string _baseUrl;
 #pragma warning restore 8618
 
-		private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
-		private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
+        private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
+        private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		public ProfilixTaskClient()
+        public ProfilixCustomActionClient()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		{
-			BaseUrl = "http://localhost:5120";
-			Initialize();
-		}
-
-		private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
-		{
-			var settings = new Newtonsoft.Json.JsonSerializerSettings();
-			UpdateJsonSerializerSettings(settings);
-			return settings;
-		}
-
-		public string BaseUrl
-		{
-			get { return _baseUrl; }
-			set
-			{
-				_baseUrl = value;
-				if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-					_baseUrl += '/';
-			}
-		}
-
-		protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
-
-		static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
-
-		partial void Initialize();
-
-		partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
-		partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
-		partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
-
-		/// <summary>
-		/// Gets all the Profilix Task records.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/ProfilixTask/All-Tasks
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <returns>Returns the Task records.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ProfilixTask>> GetAllProfilixTasksAsync()
-		{
-			return GetAllProfilixTasksAsync(System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Gets all the Profilix Task records.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/ProfilixTask/All-Tasks
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <returns>Returns the Task records.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ProfilixTask>> GetAllProfilixTasksAsync(System.Threading.CancellationToken cancellationToken)
-		{
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Method = new System.Net.Http.HttpMethod("GET");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/ProfilixTask/All-Tasks"
-					urlBuilder_.Append("api/ProfilixTask/All-Tasks");
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<ProfilixTask>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Gets a single Profilix Task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/ProfilixTask/Single-Task/{id}
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The task id.</param>
-		/// <returns>Returns the Task record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<ProfilixTask> GetSingleProfilixTaskAsync(int id)
-		{
-			return GetSingleProfilixTaskAsync(id, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Gets a single Profilix Task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/ProfilixTask/Single-Task/{id}
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The task id.</param>
-		/// <returns>Returns the Task record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<ProfilixTask> GetSingleProfilixTaskAsync(int id, System.Threading.CancellationToken cancellationToken)
-		{
-			if (id == null)
-				throw new System.ArgumentNullException("id");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Method = new System.Net.Http.HttpMethod("GET");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/ProfilixTask/Single-Task/{id}"
-					urlBuilder_.Append("api/ProfilixTask/Single-Task/");
-					urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 404)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("Returns if the no Task Summary Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Adds a task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/ProfilixTask/Add-Task
-		/// <br/>    {
-		/// <br/>        TaskName: "Task1"
-		/// <br/>        TaskExecuted: 240278
-		/// <br/>        TaskStatus: Running
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">the request for the operation.</param>
-		/// <returns>Returns the Task record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<ProfilixTask> AddProfilixTaskAsync(ProfilixTask model)
-		{
-			return AddProfilixTaskAsync(model, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Adds a task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/ProfilixTask/Add-Task
-		/// <br/>    {
-		/// <br/>        TaskName: "Task1"
-		/// <br/>        TaskExecuted: 240278
-		/// <br/>        TaskStatus: Running
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">the request for the operation.</param>
-		/// <returns>Returns the Task record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<ProfilixTask> AddProfilixTaskAsync(ProfilixTask model, System.Threading.CancellationToken cancellationToken)
-		{
-			if (model == null)
-				throw new System.ArgumentNullException("model");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
-					var content_ = new System.Net.Http.StringContent(json_);
-					content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-					request_.Content = content_;
-					request_.Method = new System.Net.Http.HttpMethod("POST");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/ProfilixTask/Add-Task"
-					urlBuilder_.Append("api/ProfilixTask/Add-Task");
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 400)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Updates a Task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/ProfilixTask/Update-Task
-		/// <br/>    {
-		/// <br/>        TaskStatus: Complete
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">The request body for the operation.</param>
-		/// <returns>Returns the Task record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<ProfilixTask> UpdateProfilixTaskAsync(ProfilixTask model)
-		{
-			return UpdateProfilixTaskAsync(model, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Updates a Task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/ProfilixTask/Update-Task
-		/// <br/>    {
-		/// <br/>        TaskStatus: Complete
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">The request body for the operation.</param>
-		/// <returns>Returns the Task record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<ProfilixTask> UpdateProfilixTaskAsync(ProfilixTask model, System.Threading.CancellationToken cancellationToken)
-		{
-			if (model == null)
-				throw new System.ArgumentNullException("model");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
-					var content_ = new System.Net.Http.StringContent(json_);
-					content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-					request_.Content = content_;
-					request_.Method = new System.Net.Http.HttpMethod("PUT");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/ProfilixTask/Update-Task"
-					urlBuilder_.Append("api/ProfilixTask/Update-Task");
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 400)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Deletes a Task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/ProfilixTask/Delete-Task
-		/// <br/>    {
-		/// <br/>        Id: 7
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The id for the task to delete.</param>
-		/// <returns>A Task`1 representing the result of the asynchronous operation.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<ProfilixTask> DeleteProfilixTaskAsync(int id)
-		{
-			return DeleteProfilixTaskAsync(id, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Deletes a Task record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/ProfilixTask/Delete-Task
-		/// <br/>    {
-		/// <br/>        Id: 7
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The id for the task to delete.</param>
-		/// <returns>A Task`1 representing the result of the asynchronous operation.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<ProfilixTask> DeleteProfilixTaskAsync(int id, System.Threading.CancellationToken cancellationToken)
-		{
-			if (id == null)
-				throw new System.ArgumentNullException("id");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Method = new System.Net.Http.HttpMethod("DELETE");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/ProfilixTask/Delete-Task/{id}"
-					urlBuilder_.Append("api/ProfilixTask/Delete-Task/");
-					urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 400)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		protected struct ObjectResponseResult<T>
-		{
-			public ObjectResponseResult(T responseObject, string responseText)
-			{
-				this.Object = responseObject;
-				this.Text = responseText;
-			}
-
-			public T Object { get; }
-
-			public string Text { get; }
-		}
-
-		public bool ReadResponseAsString { get; set; }
-
-		protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
-		{
-			if (response == null || response.Content == null)
-			{
-				return new ObjectResponseResult<T>(default(T), string.Empty);
-			}
-
-			if (ReadResponseAsString)
-			{
-				var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				try
-				{
-					var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
-					return new ObjectResponseResult<T>(typedBody, responseText);
-				}
-				catch (Newtonsoft.Json.JsonException exception)
-				{
-					var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-					throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
-				}
-			}
-			else
-			{
-				try
-				{
-					using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-					using (var streamReader = new System.IO.StreamReader(responseStream))
-					using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
-					{
-						var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
-						var typedBody = serializer.Deserialize<T>(jsonTextReader);
-						return new ObjectResponseResult<T>(typedBody, string.Empty);
-					}
-				}
-				catch (Newtonsoft.Json.JsonException exception)
-				{
-					var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-					throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
-				}
-			}
-		}
-
-		private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
-		{
-			if (value == null)
-			{
-				return "";
-			}
-
-			if (value is System.Enum)
-			{
-				var name = System.Enum.GetName(value.GetType(), value);
-				if (name != null)
-				{
-					var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
-					if (field != null)
-					{
-						var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
-							as System.Runtime.Serialization.EnumMemberAttribute;
-						if (attribute != null)
-						{
-							return attribute.Value != null ? attribute.Value : name;
-						}
-					}
-
-					var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
-					return converted == null ? string.Empty : converted;
-				}
-			}
-			else if (value is bool)
-			{
-				return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
-			}
-			else if (value is byte[])
-			{
-				return System.Convert.ToBase64String((byte[])value);
-			}
-			else if (value is string[])
-			{
-				return string.Join(",", (string[])value);
-			}
-			else if (value.GetType().IsArray)
-			{
-				var valueArray = (System.Array)value;
-				var valueTextArray = new string[valueArray.Length];
-				for (var i = 0; i < valueArray.Length; i++)
-				{
-					valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
-				}
-				return string.Join(",", valueTextArray);
-			}
-
-			var result = System.Convert.ToString(value, cultureInfo);
-			return result == null ? "" : result;
-		}
-	}
-
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	public partial class UserProfileClient
-	{
+        {
+            BaseUrl = "http://localhost:5120";
+            Initialize();
+        }
+
+        private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        {
+            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
+
+        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <summary>
+        /// Gets all the Profilix Custom Action records.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixCustomAction/All-Actions
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <returns>Returns the Custom Action records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ProfilixCustomAction>> GetAllProfilixCustomActionsAsync()
+        {
+            return GetAllProfilixCustomActionsAsync(System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Gets all the Profilix Custom Action records.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixCustomAction/All-Actions
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <returns>Returns the Custom Action records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ProfilixCustomAction>> GetAllProfilixCustomActionsAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixCustomAction/All-Actions"
+                    urlBuilder_.Append("api/ProfilixCustomAction/All-Actions");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<ProfilixCustomAction>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Gets a single Profilix Custom Action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixCustomAction/Single-Action/{id}
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The action id.</param>
+        /// <returns>Returns the Custom Action record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixCustomAction> GetSingleProfilixCustomActionAsync(int id)
+        {
+            return GetSingleProfilixCustomActionAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Gets a single Profilix Custom Action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixCustomAction/Single-Action/{id}
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The action id.</param>
+        /// <returns>Returns the Custom Action record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixCustomAction> GetSingleProfilixCustomActionAsync(int id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixCustomAction/Single-Action/{id}"
+                    urlBuilder_.Append("api/ProfilixCustomAction/Single-Action/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixCustomAction>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Returns if the no Custom Action Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Adds a custom action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixCustomAction/Add-Action
+        /// <br/>    {
+        /// <br/>        ActionName: "Clear D Drive"
+        /// <br/>        ActionType: PowerShell
+        /// <br/>        ActionContent: "RD D:\ *"
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">the request for the operation.</param>
+        /// <returns>Returns the Custom Action record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixCustomAction> AddProfilixCustomActionAsync(ProfilixCustomAction model)
+        {
+            return AddProfilixCustomActionAsync(model, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Adds a custom action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixCustomAction/Add-Action
+        /// <br/>    {
+        /// <br/>        ActionName: "Clear D Drive"
+        /// <br/>        ActionType: PowerShell
+        /// <br/>        ActionContent: "RD D:\ *"
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">the request for the operation.</param>
+        /// <returns>Returns the Custom Action record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixCustomAction> AddProfilixCustomActionAsync(ProfilixCustomAction model, System.Threading.CancellationToken cancellationToken)
+        {
+            if (model == null)
+                throw new System.ArgumentNullException("model");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixCustomAction/Add-Action"
+                    urlBuilder_.Append("api/ProfilixCustomAction/Add-Action");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixCustomAction>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Updates a Custom Action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixCustomAction/Update-Action
+        /// <br/>    {
+        /// <br/>        ActionType: CommandLine
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">The request body for the operation.</param>
+        /// <returns>Returns the Custom Action record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixCustomAction> UpdateProfilixCustomActionAsync(ProfilixCustomAction model)
+        {
+            return UpdateProfilixCustomActionAsync(model, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Updates a Custom Action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixCustomAction/Update-Action
+        /// <br/>    {
+        /// <br/>        ActionType: CommandLine
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">The request body for the operation.</param>
+        /// <returns>Returns the Custom Action record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixCustomAction> UpdateProfilixCustomActionAsync(ProfilixCustomAction model, System.Threading.CancellationToken cancellationToken)
+        {
+            if (model == null)
+                throw new System.ArgumentNullException("model");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixCustomAction/Update-Action"
+                    urlBuilder_.Append("api/ProfilixCustomAction/Update-Action");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixCustomAction>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Deletes a Custom Action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixCustomAction/Delete-Action
+        /// <br/>    {
+        /// <br/>        Id: 7
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The id for the custom action to delete.</param>
+        /// <returns>A Task`1 representing the result of the asynchronous operation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixCustomAction> DeleteProfilixCustomActionAsync(int id)
+        {
+            return DeleteProfilixCustomActionAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Deletes a Custom Action record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixCustomAction/Delete-Action
+        /// <br/>    {
+        /// <br/>        Id: 7
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The id for the custom action to delete.</param>
+        /// <returns>A Task`1 representing the result of the asynchronous operation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixCustomAction> DeleteProfilixCustomActionAsync(int id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixCustomAction/Delete-Action/{id}"
+                    urlBuilder_.Append("api/ProfilixCustomAction/Delete-Action/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixCustomAction>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T), string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody, responseText);
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    using (var streamReader = new System.IO.StreamReader(responseStream))
+                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
+                    {
+                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
+                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
+                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool)
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[])value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProfilixTaskClient
+    {
 #pragma warning disable 8618
-		private string _baseUrl;
+        private string _baseUrl;
 #pragma warning restore 8618
 
-		private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
-		private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
+        private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
+        private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		public UserProfileClient()
+        public ProfilixTaskClient()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-		{
-			BaseUrl = "http://localhost:5120";
-			Initialize();
-		}
-
-		private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
-		{
-			var settings = new Newtonsoft.Json.JsonSerializerSettings();
-			UpdateJsonSerializerSettings(settings);
-			return settings;
-		}
-
-		public string BaseUrl
-		{
-			get { return _baseUrl; }
-			set
-			{
-				_baseUrl = value;
-				if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
-					_baseUrl += '/';
-			}
-		}
-
-		protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
-
-		static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
-
-		partial void Initialize();
-
-		partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
-		partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
-		partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
-
-		/// <summary>
-		/// Gets all the User Profile records.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/UserProfile/All-User-Profiles
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <returns>Returns the User Profile records.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<UserProfile> GetAllUserProfilesAsync()
-		{
-			return GetAllUserProfilesAsync(System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Gets all the User Profile records.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/UserProfile/All-User-Profiles
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <returns>Returns the User Profile records.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<UserProfile> GetAllUserProfilesAsync(System.Threading.CancellationToken cancellationToken)
-		{
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Method = new System.Net.Http.HttpMethod("GET");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/UserProfile/All-User-Profiles"
-					urlBuilder_.Append("api/UserProfile/All-User-Profiles");
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 404)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("Returns if the no User Profile Summary Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Gets a single User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/UserProfile/Single-User-Profile/{id}
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The user profile id.</param>
-		/// <returns>Returns the User Profile records.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<UserProfile> GetSingleUserProfileAsync(int id)
-		{
-			return GetSingleUserProfileAsync(id, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Gets a single User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    GET /api/UserProfile/Single-User-Profile/{id}
-		/// <br/>    {
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The user profile id.</param>
-		/// <returns>Returns the User Profile records.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<UserProfile> GetSingleUserProfileAsync(int id, System.Threading.CancellationToken cancellationToken)
-		{
-			if (id == null)
-				throw new System.ArgumentNullException("id");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Method = new System.Net.Http.HttpMethod("GET");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/UserProfile/Single-User-Profile/{id}"
-					urlBuilder_.Append("api/UserProfile/Single-User-Profile/");
-					urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 404)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("Returns if the no User Profile Summary Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Adds a User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/UserProfile/Add-User-Profile
-		/// <br/>    {
-		/// <br/>        UserName: "Dave Brett"
-		/// <br/>        ProfileSize: 1000324
-		/// <br/>        TempSize: 321773
-		/// <br/>        ProfileType: 0
-		/// <br/>        ProfileDirectory: "C:\users\dave"
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">the request for the operation.</param>
-		/// <returns>Returns the newly created item.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<UserProfile> AddUserProfileAsync(UserProfile model)
-		{
-			return AddUserProfileAsync(model, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Adds a User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/UserProfile/Add-User-Profile
-		/// <br/>    {
-		/// <br/>        UserName: "Dave Brett"
-		/// <br/>        ProfileSize: 1000324
-		/// <br/>        TempSize: 321773
-		/// <br/>        ProfileType: 0
-		/// <br/>        ProfileDirectory: "C:\users\dave"
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">the request for the operation.</param>
-		/// <returns>Returns the newly created item.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<UserProfile> AddUserProfileAsync(UserProfile model, System.Threading.CancellationToken cancellationToken)
-		{
-			if (model == null)
-				throw new System.ArgumentNullException("model");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
-					var content_ = new System.Net.Http.StringContent(json_);
-					content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-					request_.Content = content_;
-					request_.Method = new System.Net.Http.HttpMethod("POST");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/UserProfile/Add-User-Profile"
-					urlBuilder_.Append("api/UserProfile/Add-User-Profile");
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 400)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("If the item already exists.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Updates a User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/UserProfile/Update-User-Profile
-		/// <br/>    {
-		/// <br/>        UserName: "DaveBrettUpdated"
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">The request body for the operation.</param>
-		/// <returns>Returns the updated User Profile record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<UserProfile> UpdateUserProfileAsync(UserProfile model)
-		{
-			return UpdateUserProfileAsync(model, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Updates a User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/UserProfile/Update-User-Profile
-		/// <br/>    {
-		/// <br/>        UserName: "DaveBrettUpdated"
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="model">The request body for the operation.</param>
-		/// <returns>Returns the updated User Profile record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<UserProfile> UpdateUserProfileAsync(UserProfile model, System.Threading.CancellationToken cancellationToken)
-		{
-			if (model == null)
-				throw new System.ArgumentNullException("model");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
-					var content_ = new System.Net.Http.StringContent(json_);
-					content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-					request_.Content = content_;
-					request_.Method = new System.Net.Http.HttpMethod("PUT");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/UserProfile/Update-User-Profile"
-					urlBuilder_.Append("api/UserProfile/Update-User-Profile");
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 400)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("Returns the HTTP exception.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		/// <summary>
-		/// Deletes a User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/UserProfile/Delete-User-Profile
-		/// <br/>    {
-		/// <br/>        Id: 7
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The id for the user profile to delete.</param>
-		/// <returns>Returns the updated User Profile record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual System.Threading.Tasks.Task<UserProfile> DeleteUserProfileAsync(int id)
-		{
-			return DeleteUserProfileAsync(id, System.Threading.CancellationToken.None);
-		}
-
-		/// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-		/// <summary>
-		/// Deletes a User Profile record.
-		/// </summary>
-		/// <remarks>
-		/// Sample request:
-		/// <br/>            
-		/// <br/>    POST /api/UserProfile/Delete-User-Profile
-		/// <br/>    {
-		/// <br/>        Id: 7
-		/// <br/>    }
-		/// </remarks>
-		/// <param name="id">The id for the user profile to delete.</param>
-		/// <returns>Returns the updated User Profile record.</returns>
-		/// <exception cref="ApiException">A server side error occurred.</exception>
-		public virtual async System.Threading.Tasks.Task<UserProfile> DeleteUserProfileAsync(int id, System.Threading.CancellationToken cancellationToken)
-		{
-			if (id == null)
-				throw new System.ArgumentNullException("id");
-
-			var client_ = new System.Net.Http.HttpClient();
-			var disposeClient_ = false;
-			try
-			{
-				using (var request_ = new System.Net.Http.HttpRequestMessage())
-				{
-					request_.Method = new System.Net.Http.HttpMethod("DELETE");
-					request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
-
-					var urlBuilder_ = new System.Text.StringBuilder();
-					if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
-					// Operation Path: "api/UserProfile/Delete-User-Profile/{id}"
-					urlBuilder_.Append("api/UserProfile/Delete-User-Profile/");
-					urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
-
-					PrepareRequest(client_, request_, urlBuilder_);
-
-					var url_ = urlBuilder_.ToString();
-					request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-					PrepareRequest(client_, request_, url_);
-
-					var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-					var disposeResponse_ = true;
-					try
-					{
-						var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
-						foreach (var item_ in response_.Headers)
-							headers_[item_.Key] = item_.Value;
-						if (response_.Content != null && response_.Content.Headers != null)
-						{
-							foreach (var item_ in response_.Content.Headers)
-								headers_[item_.Key] = item_.Value;
-						}
-
-						ProcessResponse(client_, response_);
-
-						var status_ = (int)response_.StatusCode;
-						if (status_ == 200)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							return objectResponse_.Object;
-						}
-						else
-						if (status_ == 400)
-						{
-							var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
-							if (objectResponse_.Object == null)
-							{
-								throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-							}
-							throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
-						}
-						else
-						{
-							var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-							throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-						}
-					}
-					finally
-					{
-						if (disposeResponse_)
-							response_.Dispose();
-					}
-				}
-			}
-			finally
-			{
-				if (disposeClient_)
-					client_.Dispose();
-			}
-		}
-
-		protected struct ObjectResponseResult<T>
-		{
-			public ObjectResponseResult(T responseObject, string responseText)
-			{
-				this.Object = responseObject;
-				this.Text = responseText;
-			}
-
-			public T Object { get; }
-
-			public string Text { get; }
-		}
-
-		public bool ReadResponseAsString { get; set; }
-
-		protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
-		{
-			if (response == null || response.Content == null)
-			{
-				return new ObjectResponseResult<T>(default(T), string.Empty);
-			}
-
-			if (ReadResponseAsString)
-			{
-				var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-				try
-				{
-					var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
-					return new ObjectResponseResult<T>(typedBody, responseText);
-				}
-				catch (Newtonsoft.Json.JsonException exception)
-				{
-					var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
-					throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
-				}
-			}
-			else
-			{
-				try
-				{
-					using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-					using (var streamReader = new System.IO.StreamReader(responseStream))
-					using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
-					{
-						var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
-						var typedBody = serializer.Deserialize<T>(jsonTextReader);
-						return new ObjectResponseResult<T>(typedBody, string.Empty);
-					}
-				}
-				catch (Newtonsoft.Json.JsonException exception)
-				{
-					var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
-					throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
-				}
-			}
-		}
-
-		private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
-		{
-			if (value == null)
-			{
-				return "";
-			}
-
-			if (value is System.Enum)
-			{
-				var name = System.Enum.GetName(value.GetType(), value);
-				if (name != null)
-				{
-					var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
-					if (field != null)
-					{
-						var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
-							as System.Runtime.Serialization.EnumMemberAttribute;
-						if (attribute != null)
-						{
-							return attribute.Value != null ? attribute.Value : name;
-						}
-					}
-
-					var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
-					return converted == null ? string.Empty : converted;
-				}
-			}
-			else if (value is bool)
-			{
-				return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
-			}
-			else if (value is byte[])
-			{
-				return System.Convert.ToBase64String((byte[])value);
-			}
-			else if (value is string[])
-			{
-				return string.Join(",", (string[])value);
-			}
-			else if (value.GetType().IsArray)
-			{
-				var valueArray = (System.Array)value;
-				var valueTextArray = new string[valueArray.Length];
-				for (var i = 0; i < valueArray.Length; i++)
-				{
-					valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
-				}
-				return string.Join(",", valueTextArray);
-			}
-
-			var result = System.Convert.ToString(value, cultureInfo);
-			return result == null ? "" : result;
-		}
-	}
-
-	/// <summary>
-	/// Class for the EUC Profile Buddy Task model.
-	/// </summary>
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	public partial class ProfilixTask
-	{
-		/// <summary>
-		/// Gets or sets the Id.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public int Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the users name.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("userName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string UserName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the Task Name.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("taskName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string TaskName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the task executed date and time.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("taskExecuted", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public System.DateTimeOffset TaskExecuted { get; set; }
-
-		/// <summary>
-		/// Gets or sets the task state.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("taskState", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public ProfilixTaskState TaskState { get; set; }
-
-		/// <summary>
-		/// Gets or sets the task run time.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("taskRunTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public System.TimeSpan TaskRunTime { get; set; }
-
-	}
-
-	/// <summary>
-	/// Enum to hold the task status.
-	/// </summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	public enum ProfilixTaskState
-	{
-
-		Unknown = 0,
-
-		Completed = 1,
-
-		Errored = 2,
-
-		Running = 3,
-
-	}
-
-	/// <summary>
-	/// Class for the user profile model.
-	/// </summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	public partial class UserProfile
-	{
-		/// <summary>
-		/// Gets or sets the users id.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public int Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the users name.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("userName", Required = Newtonsoft.Json.Required.Always)]
-		[System.ComponentModel.DataAnnotations.Required]
-		public string UserName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the profile directory.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("profileDirectory", Required = Newtonsoft.Json.Required.Always)]
-		[System.ComponentModel.DataAnnotations.Required]
-		public string ProfileDirectory { get; set; }
-
-		/// <summary>
-		/// Gets or sets the size of the profile.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("profileSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public long ProfileSize { get; set; }
-
-		/// <summary>
-		/// Gets or sets the temp data size of the profile.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("tempSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public long TempSize { get; set; }
-
-		/// <summary>
-		/// Gets or sets the profile type.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("profileType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public ProfileType ProfileType { get; set; }
-
-		/// <summary>
-		/// Gets or sets the last updated time of this entity.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("lastUpdated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public System.DateTimeOffset LastUpdated { get; set; }
-
-		/// <summary>
-		/// Gets or sets the date created time of this entity.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("dateCreated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public System.DateTimeOffset DateCreated { get; set; }
-
-		/// <summary>
-		/// Gets or sets the profile age of this entity.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("profileAge", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public System.TimeSpan ProfileAge { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether gets or sets the profile ActiveStatus.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("activeStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public bool ActiveStatus { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether gets or sets the profile ActiveStatus.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("hubConnectionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string HubConnectionId { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether Operating System.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("operatingSystem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string OperatingSystem { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether Operating System Version.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("operatingSystemVersion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string OperatingSystemVersion { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether Number of CPUs.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("numberOfCPUs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public int NumberOfCPUs { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether Memory MB.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("memoryInMB", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public int MemoryInMB { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether Memory GB.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("memoryInGB", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public int MemoryInGB { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether User Domain.
-		/// </summary>
-		[Newtonsoft.Json.JsonProperty("userDomain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-		public string UserDomain { get; set; }
-
-	}
-
-	/// <summary>
-	/// Enum to hold the profile type.
-	/// </summary>
-	[System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	public enum ProfileType
-	{
-
-		Unknown = 0,
-
-		CitrixProfileManager = 1,
-
-		FSLogix = 2,
-
-		Local = 3,
-
-		Liquidware = 4,
-
-	}
-
-
-
-	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	public partial class ApiException : System.Exception
-	{
-		public int StatusCode { get; private set; }
-
-		public string Response { get; private set; }
-
-		public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
-
-		public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException)
-			: base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + ((response == null) ? "(null)" : response.Substring(0, response.Length >= 512 ? 512 : response.Length)), innerException)
-		{
-			StatusCode = statusCode;
-			Response = response;
-			Headers = headers;
-		}
-
-		public override string ToString()
-		{
-			return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
-		}
-	}
-
-	[System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
-	[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-	public partial class ApiException<TResult> : ApiException
-	{
-		public TResult Result { get; private set; }
-
-		public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException)
-			: base(message, statusCode, response, headers, innerException)
-		{
-			Result = result;
-		}
-	}
+        {
+            BaseUrl = "http://localhost:5120";
+            Initialize();
+        }
+
+        private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        {
+            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
+
+        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <summary>
+        /// Gets all the Profilix Task records.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixTask/All-Tasks
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <returns>Returns the Task records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ProfilixTask>> GetAllProfilixTasksAsync()
+        {
+            return GetAllProfilixTasksAsync(System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Gets all the Profilix Task records.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixTask/All-Tasks
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <returns>Returns the Task records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ProfilixTask>> GetAllProfilixTasksAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixTask/All-Tasks"
+                    urlBuilder_.Append("api/ProfilixTask/All-Tasks");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<ProfilixTask>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Gets a single Profilix Task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixTask/Single-Task/{id}
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The task id.</param>
+        /// <returns>Returns the Task record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixTask> GetSingleProfilixTaskAsync(int id)
+        {
+            return GetSingleProfilixTaskAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Gets a single Profilix Task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/ProfilixTask/Single-Task/{id}
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The task id.</param>
+        /// <returns>Returns the Task record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixTask> GetSingleProfilixTaskAsync(int id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixTask/Single-Task/{id}"
+                    urlBuilder_.Append("api/ProfilixTask/Single-Task/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Returns if the no Task Summary Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Adds a task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixTask/Add-Task
+        /// <br/>    {
+        /// <br/>        TaskName: "Task1"
+        /// <br/>        TaskExecuted: 240278
+        /// <br/>        TaskStatus: Running
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">the request for the operation.</param>
+        /// <returns>Returns the Task record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixTask> AddProfilixTaskAsync(ProfilixTask model)
+        {
+            return AddProfilixTaskAsync(model, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Adds a task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixTask/Add-Task
+        /// <br/>    {
+        /// <br/>        TaskName: "Task1"
+        /// <br/>        TaskExecuted: 240278
+        /// <br/>        TaskStatus: Running
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">the request for the operation.</param>
+        /// <returns>Returns the Task record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixTask> AddProfilixTaskAsync(ProfilixTask model, System.Threading.CancellationToken cancellationToken)
+        {
+            if (model == null)
+                throw new System.ArgumentNullException("model");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixTask/Add-Task"
+                    urlBuilder_.Append("api/ProfilixTask/Add-Task");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Updates a Task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixTask/Update-Task
+        /// <br/>    {
+        /// <br/>        TaskStatus: Complete
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">The request body for the operation.</param>
+        /// <returns>Returns the Task record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixTask> UpdateProfilixTaskAsync(ProfilixTask model)
+        {
+            return UpdateProfilixTaskAsync(model, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Updates a Task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixTask/Update-Task
+        /// <br/>    {
+        /// <br/>        TaskStatus: Complete
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">The request body for the operation.</param>
+        /// <returns>Returns the Task record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixTask> UpdateProfilixTaskAsync(ProfilixTask model, System.Threading.CancellationToken cancellationToken)
+        {
+            if (model == null)
+                throw new System.ArgumentNullException("model");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixTask/Update-Task"
+                    urlBuilder_.Append("api/ProfilixTask/Update-Task");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Deletes a Task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixTask/Delete-Task
+        /// <br/>    {
+        /// <br/>        Id: 7
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The id for the task to delete.</param>
+        /// <returns>A Task`1 representing the result of the asynchronous operation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<ProfilixTask> DeleteProfilixTaskAsync(int id)
+        {
+            return DeleteProfilixTaskAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Deletes a Task record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/ProfilixTask/Delete-Task
+        /// <br/>    {
+        /// <br/>        Id: 7
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The id for the task to delete.</param>
+        /// <returns>A Task`1 representing the result of the asynchronous operation.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<ProfilixTask> DeleteProfilixTaskAsync(int id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/ProfilixTask/Delete-Task/{id}"
+                    urlBuilder_.Append("api/ProfilixTask/Delete-Task/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<ProfilixTask>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T), string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody, responseText);
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    using (var streamReader = new System.IO.StreamReader(responseStream))
+                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
+                    {
+                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
+                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
+                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool)
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[])value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class UserProfileClient
+    {
+#pragma warning disable 8618
+        private string _baseUrl;
+#pragma warning restore 8618
+
+        private static System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(CreateSerializerSettings, true);
+        private Newtonsoft.Json.JsonSerializerSettings _instanceSettings;
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public UserProfileClient()
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        {
+            BaseUrl = "http://localhost:5120";
+            Initialize();
+        }
+
+        private static Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
+        {
+            var settings = new Newtonsoft.Json.JsonSerializerSettings();
+            UpdateJsonSerializerSettings(settings);
+            return settings;
+        }
+
+        public string BaseUrl
+        {
+            get { return _baseUrl; }
+            set
+            {
+                _baseUrl = value;
+                if (!string.IsNullOrEmpty(_baseUrl) && !_baseUrl.EndsWith("/"))
+                    _baseUrl += '/';
+            }
+        }
+
+        protected Newtonsoft.Json.JsonSerializerSettings JsonSerializerSettings { get { return _instanceSettings ?? _settings.Value; } }
+
+        static partial void UpdateJsonSerializerSettings(Newtonsoft.Json.JsonSerializerSettings settings);
+
+        partial void Initialize();
+
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, string url);
+        partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
+        partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
+
+        /// <summary>
+        /// Gets all the User Profile records.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/UserProfile/All-User-Profiles
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <returns>Returns the User Profile records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UserProfile> GetAllUserProfilesAsync()
+        {
+            return GetAllUserProfilesAsync(System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Gets all the User Profile records.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/UserProfile/All-User-Profiles
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <returns>Returns the User Profile records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UserProfile> GetAllUserProfilesAsync(System.Threading.CancellationToken cancellationToken)
+        {
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/UserProfile/All-User-Profiles"
+                    urlBuilder_.Append("api/UserProfile/All-User-Profiles");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Returns if the no User Profile Summary Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Gets a single User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/UserProfile/Single-User-Profile/{id}
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The user profile id.</param>
+        /// <returns>Returns the User Profile records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UserProfile> GetSingleUserProfileAsync(int id)
+        {
+            return GetSingleUserProfileAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Gets a single User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    GET /api/UserProfile/Single-User-Profile/{id}
+        /// <br/>    {
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The user profile id.</param>
+        /// <returns>Returns the User Profile records.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UserProfile> GetSingleUserProfileAsync(int id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/UserProfile/Single-User-Profile/{id}"
+                    urlBuilder_.Append("api/UserProfile/Single-User-Profile/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 404)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Returns if the no User Profile Summary Records are found.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Adds a User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/UserProfile/Add-User-Profile
+        /// <br/>    {
+        /// <br/>        UserName: "Dave Brett"
+        /// <br/>        ProfileSize: 1000324
+        /// <br/>        TempSize: 321773
+        /// <br/>        ProfileType: 0
+        /// <br/>        ProfileDirectory: "C:\users\dave"
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">the request for the operation.</param>
+        /// <returns>Returns the newly created item.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UserProfile> AddUserProfileAsync(UserProfile model)
+        {
+            return AddUserProfileAsync(model, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Adds a User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/UserProfile/Add-User-Profile
+        /// <br/>    {
+        /// <br/>        UserName: "Dave Brett"
+        /// <br/>        ProfileSize: 1000324
+        /// <br/>        TempSize: 321773
+        /// <br/>        ProfileType: 0
+        /// <br/>        ProfileDirectory: "C:\users\dave"
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">the request for the operation.</param>
+        /// <returns>Returns the newly created item.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UserProfile> AddUserProfileAsync(UserProfile model, System.Threading.CancellationToken cancellationToken)
+        {
+            if (model == null)
+                throw new System.ArgumentNullException("model");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/UserProfile/Add-User-Profile"
+                    urlBuilder_.Append("api/UserProfile/Add-User-Profile");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("If the item already exists.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Updates a User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/UserProfile/Update-User-Profile
+        /// <br/>    {
+        /// <br/>        UserName: "DaveBrettUpdated"
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">The request body for the operation.</param>
+        /// <returns>Returns the updated User Profile record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UserProfile> UpdateUserProfileAsync(UserProfile model)
+        {
+            return UpdateUserProfileAsync(model, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Updates a User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/UserProfile/Update-User-Profile
+        /// <br/>    {
+        /// <br/>        UserName: "DaveBrettUpdated"
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="model">The request body for the operation.</param>
+        /// <returns>Returns the updated User Profile record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UserProfile> UpdateUserProfileAsync(UserProfile model, System.Threading.CancellationToken cancellationToken)
+        {
+            if (model == null)
+                throw new System.ArgumentNullException("model");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(model, JsonSerializerSettings);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/UserProfile/Update-User-Profile"
+                    urlBuilder_.Append("api/UserProfile/Update-User-Profile");
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("Returns the HTTP exception.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Deletes a User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/UserProfile/Delete-User-Profile
+        /// <br/>    {
+        /// <br/>        Id: 7
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The id for the user profile to delete.</param>
+        /// <returns>Returns the updated User Profile record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<UserProfile> DeleteUserProfileAsync(int id)
+        {
+            return DeleteUserProfileAsync(id, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>
+        /// Deletes a User Profile record.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// <br/>            
+        /// <br/>    POST /api/UserProfile/Delete-User-Profile
+        /// <br/>    {
+        /// <br/>        Id: 7
+        /// <br/>    }
+        /// </remarks>
+        /// <param name="id">The id for the user profile to delete.</param>
+        /// <returns>Returns the updated User Profile record.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<UserProfile> DeleteUserProfileAsync(int id, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id == null)
+                throw new System.ArgumentNullException("id");
+
+            var client_ = new System.Net.Http.HttpClient();
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("DELETE");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                    if (!string.IsNullOrEmpty(_baseUrl)) urlBuilder_.Append(_baseUrl);
+                    // Operation Path: "api/UserProfile/Delete-User-Profile/{id}"
+                    urlBuilder_.Append("api/UserProfile/Delete-User-Profile/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<UserProfile>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        if (status_ == 400)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            throw new ApiException<string>("A server side error occurred.", status_, objectResponse_.Text, headers_, objectResponse_.Object, null);
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        protected struct ObjectResponseResult<T>
+        {
+            public ObjectResponseResult(T responseObject, string responseText)
+            {
+                this.Object = responseObject;
+                this.Text = responseText;
+            }
+
+            public T Object { get; }
+
+            public string Text { get; }
+        }
+
+        public bool ReadResponseAsString { get; set; }
+
+        protected virtual async System.Threading.Tasks.Task<ObjectResponseResult<T>> ReadObjectResponseAsync<T>(System.Net.Http.HttpResponseMessage response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Threading.CancellationToken cancellationToken)
+        {
+            if (response == null || response.Content == null)
+            {
+                return new ObjectResponseResult<T>(default(T), string.Empty);
+            }
+
+            if (ReadResponseAsString)
+            {
+                var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    var typedBody = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responseText, JsonSerializerSettings);
+                    return new ObjectResponseResult<T>(typedBody, responseText);
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body string as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, responseText, headers, exception);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    using (var streamReader = new System.IO.StreamReader(responseStream))
+                    using (var jsonTextReader = new Newtonsoft.Json.JsonTextReader(streamReader))
+                    {
+                        var serializer = Newtonsoft.Json.JsonSerializer.Create(JsonSerializerSettings);
+                        var typedBody = serializer.Deserialize<T>(jsonTextReader);
+                        return new ObjectResponseResult<T>(typedBody, string.Empty);
+                    }
+                }
+                catch (Newtonsoft.Json.JsonException exception)
+                {
+                    var message = "Could not deserialize the response body stream as " + typeof(T).FullName + ".";
+                    throw new ApiException(message, (int)response.StatusCode, string.Empty, headers, exception);
+                }
+            }
+        }
+
+        private string ConvertToString(object value, System.Globalization.CultureInfo cultureInfo)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+
+            if (value is System.Enum)
+            {
+                var name = System.Enum.GetName(value.GetType(), value);
+                if (name != null)
+                {
+                    var field = System.Reflection.IntrospectionExtensions.GetTypeInfo(value.GetType()).GetDeclaredField(name);
+                    if (field != null)
+                    {
+                        var attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(field, typeof(System.Runtime.Serialization.EnumMemberAttribute))
+                            as System.Runtime.Serialization.EnumMemberAttribute;
+                        if (attribute != null)
+                        {
+                            return attribute.Value != null ? attribute.Value : name;
+                        }
+                    }
+
+                    var converted = System.Convert.ToString(System.Convert.ChangeType(value, System.Enum.GetUnderlyingType(value.GetType()), cultureInfo));
+                    return converted == null ? string.Empty : converted;
+                }
+            }
+            else if (value is bool)
+            {
+                return System.Convert.ToString((bool)value, cultureInfo).ToLowerInvariant();
+            }
+            else if (value is byte[])
+            {
+                return System.Convert.ToBase64String((byte[])value);
+            }
+            else if (value is string[])
+            {
+                return string.Join(",", (string[])value);
+            }
+            else if (value.GetType().IsArray)
+            {
+                var valueArray = (System.Array)value;
+                var valueTextArray = new string[valueArray.Length];
+                for (var i = 0; i < valueArray.Length; i++)
+                {
+                    valueTextArray[i] = ConvertToString(valueArray.GetValue(i), cultureInfo);
+                }
+                return string.Join(",", valueTextArray);
+            }
+
+            var result = System.Convert.ToString(value, cultureInfo);
+            return result == null ? "" : result;
+        }
+    }
+
+    /// <summary>
+    /// Class for the custom actions model.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProfilixCustomAction
+    {
+        /// <summary>
+        /// Gets or sets the action id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom action name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("actionName", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public string ActionName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom action description.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("actionDescription", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public string ActionDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom action type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("actionType", Required = Newtonsoft.Json.Required.Always)]
+        public ActionType ActionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom action content.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("actionContent", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public string ActionContent { get; set; }
+
+    }
+
+    /// <summary>
+    /// Enum to hold the profile type.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum ActionType
+    {
+
+        Unknown = 0,
+
+        PowerShell = 1,
+
+    }
+
+    /// <summary>
+    /// Class for the EUC Profile Buddy Task model.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ProfilixTask
+    {
+        /// <summary>
+        /// Gets or sets the Id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the users name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("userName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Task Name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taskName", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string TaskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the task executed date and time.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taskExecuted", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset TaskExecuted { get; set; }
+
+        /// <summary>
+        /// Gets or sets the task state.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taskState", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ProfilixTaskState TaskState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the task run time.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("taskRunTime", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.TimeSpan TaskRunTime { get; set; }
+
+    }
+
+    /// <summary>
+    /// Enum to hold the task status.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum ProfilixTaskState
+    {
+
+        Unknown = 0,
+
+        Completed = 1,
+
+        Errored = 2,
+
+        Running = 3,
+
+    }
+
+    /// <summary>
+    /// Class for the user profile model.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class UserProfile
+    {
+        /// <summary>
+        /// Gets or sets the users id.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the users name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("userName", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the profile directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("profileDirectory", Required = Newtonsoft.Json.Required.Always)]
+        [System.ComponentModel.DataAnnotations.Required]
+        public string ProfileDirectory { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("profileSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long ProfileSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the temp data size of the profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("tempSize", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TempSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the profile type.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("profileType", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ProfileType ProfileType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last updated time of this entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("lastUpdated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset LastUpdated { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date created time of this entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("dateCreated", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.DateTimeOffset DateCreated { get; set; }
+
+        /// <summary>
+        /// Gets or sets the profile age of this entity.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("profileAge", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.TimeSpan ProfileAge { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether gets or sets the profile ActiveStatus.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("activeStatus", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool ActiveStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether gets or sets the profile ActiveStatus.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("hubConnectionId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string HubConnectionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Operating System.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("operatingSystem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string OperatingSystem { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Operating System Version.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("operatingSystemVersion", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string OperatingSystemVersion { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Number of CPUs.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("numberOfCPUs", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int NumberOfCPUs { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Memory MB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("memoryInMB", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int MemoryInMB { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Memory GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("memoryInGB", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int MemoryInGB { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether User Domain.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty("userDomain", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string UserDomain { get; set; }
+
+    }
+
+    /// <summary>
+    /// Enum to hold the profile type.
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public enum ProfileType
+    {
+
+        Unknown = 0,
+
+        CitrixProfileManager = 1,
+
+        FSLogix = 2,
+
+        Local = 3,
+
+        Liquidware = 4,
+
+    }
+
+
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ApiException : System.Exception
+    {
+        public int StatusCode { get; private set; }
+
+        public string Response { get; private set; }
+
+        public System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> Headers { get; private set; }
+
+        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, System.Exception innerException)
+            : base(message + "\n\nStatus: " + statusCode + "\nResponse: \n" + ((response == null) ? "(null)" : response.Substring(0, response.Length >= 512 ? 512 : response.Length)), innerException)
+        {
+            StatusCode = statusCode;
+            Response = response;
+            Headers = headers;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("HTTP Response: \n\n{0}\n\n{1}", Response, base.ToString());
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class ApiException<TResult> : ApiException
+    {
+        public TResult Result { get; private set; }
+
+        public ApiException(string message, int statusCode, string response, System.Collections.Generic.IReadOnlyDictionary<string, System.Collections.Generic.IEnumerable<string>> headers, TResult result, System.Exception innerException)
+            : base(message, statusCode, response, headers, innerException)
+        {
+            Result = result;
+        }
+    }
 
 }
 

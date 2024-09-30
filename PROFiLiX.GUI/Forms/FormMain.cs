@@ -54,14 +54,14 @@ namespace PROFiLiX.GUI
                     PROFiLiX.ServerOnline = false;
                     return Task.CompletedTask;
                 };
-
-                hubConnection.On<string, string, string, int>("ReceiveMessage", (clientAction, adminUserName, connectionId, taskId) =>
+                
+                hubConnection.On<string, string, string, int, string, ActionType, string>("ReceiveMessage", (clientAction, adminUserName, connectionId, taskId, customTaskName, actionType, customTaskContent) =>
                 {
                     this.Invoke((Delegate)(() =>
                     {
                         string actionTaken = string.Empty;
                         hubServices = new ProfilixHubServices(PROFiLiX, hubConnection);
-                        hubServices.ProcessHubAction(clientAction, adminUserName, connectionId, taskId);
+                        hubServices.ProcessHubAction(clientAction, adminUserName, connectionId, taskId, customTaskName, actionType, customTaskContent);
                         switch (clientAction)
                         {
                             case "ClearTempFiles":
@@ -81,6 +81,9 @@ namespace PROFiLiX.GUI
                                 break;
                             case "ResetTeams":
                                 actionTaken = "Reset Teams";
+                                break;
+                            case "Custom":
+                                actionTaken = customTaskName;
                                 break;
                             default:
                                 actionTaken = "Undefined Action";

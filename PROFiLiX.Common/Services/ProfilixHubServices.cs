@@ -5,8 +5,14 @@
 namespace PROFiLiX.Common.Services
 {
     using Microsoft.AspNetCore.SignalR.Client;
+    using PROFiLiX.Common.ApiClient;
     using PROFiLiX.Common.Configuration;
     using PROFiLiX.Common.Profile.Model;
+    using System.Threading.Tasks.Dataflow;
+    using System;
+    using System.Management.Automation;
+    using System.Diagnostics;
+    using System.IO;
 
     /// <summary>
     /// Class to execute profile buddy hub actions.
@@ -30,7 +36,7 @@ namespace PROFiLiX.Common.Services
 
         /// <inheritdoc/>
         [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
-        public async void ProcessHubAction(string clientAction, string adminUserName, string connectionId, int taskId)
+        public async void ProcessHubAction(string clientAction, string adminUserName, string connectionId, int taskId, string customTaskName, ActionType actionType, string customTaskContent)
         {
             if (clientAction == "ClearTempFiles")
             {
@@ -90,6 +96,33 @@ namespace PROFiLiX.Common.Services
                 }
 
                 await this.hubConnection.InvokeAsync("ReceiveMessageFromClient", $"{this.appConfig.UserDetail.UserName} has finished resetting Microsoft Teams", taskId);
+            }
+
+            if (clientAction == "Custom")
+            {
+                if (actionType == ActionType.PowerShell)
+                {
+                    string tempPath = Path.GetTempPath();
+                    var fileName = $@"{Guid.NewGuid()}.ps1";
+                    var fullFileName = Path.Join(tempPath, fileName);
+                    File.WriteAllText(fullFileName, customTaskContent);
+
+                    var scriptArguments = "-ExecutionPolicy Bypass -File \"" + fullFileName + "\"";
+                    var processStartInfo = new ProcessStartInfo("powershell.exe", scriptArguments);
+                    processStartInfo.RedirectStandardOutput = true;
+                    processStartInfo.RedirectStandardError = true;
+
+                    using var process = new Process();
+                    process.StartInfo = processStartInfo;
+                    process.Start();
+
+                    string output = process.StandardOutput.ReadToEnd();
+                    string error = process.StandardError.ReadToEnd();
+
+                    File.Delete(fullFileName);
+                }
+
+                await this.hubConnection.InvokeAsync("ReceiveMessageFromClient", $"{this.appConfig.UserDetail.UserName} has finished running the custom action {customTaskName}", taskId);
             }
         }
     }

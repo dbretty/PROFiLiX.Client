@@ -2,6 +2,8 @@
 // Copyright (c) bretty.me.uk. All rights reserved.
 // </copyright>
 
+using PROFiLiX.Common.ApiClient;
+
 namespace PROFiLiX.Common.Services
 {
     /// <summary>
@@ -16,6 +18,9 @@ namespace PROFiLiX.Common.Services
         /// <param name="adminUserName">The admin user name.</param>
         /// <param name="connectionId">The connection Idy.</param>
         /// <param name="taskId">The Server Side task Id.</param>
-        void ProcessHubAction(string clientAction, string adminUserName, string connectionId, int taskId);
+        /// <param name="customTaskName">The custom task name.</param>
+        /// <param name="actionType">The action type.</param>
+        /// <param name="customTaskContent">The Custom Action Code.</param>
+        void ProcessHubAction(string clientAction, string adminUserName, string connectionId, int taskId, string customTaskName, ActionType actionType, string customTaskContent);
     }
 }
